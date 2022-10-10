@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:prayer_times_app/Views/timer/show_time_left.dart';
 import 'package:provider/provider.dart';
-import 'package:intl/intl.dart';
 
 import '../../Controller/prayer_times_controller.dart';
 import '../prayer_time/prayer_time_View.dart';
@@ -23,8 +23,14 @@ class _PrayerTimesHomeState extends State<PrayerTimesHome> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration.zero).then((value) =>
-        Provider.of<PrayerTimesController>(context, listen: false).loadData());
+
+    // var box = Hive.box('prayers');
+    // String? data = box.get('fajr');
+    // if (data!.isNotEmpty) {
+      Future.delayed(Duration.zero).then((value) =>
+          Provider.of<PrayerTimesController>(context, listen: false)
+              .loadData());
+   // }
   }
 
   @override
@@ -32,7 +38,6 @@ class _PrayerTimesHomeState extends State<PrayerTimesHome> {
     super.didChangeDependencies();
 
     if (isStarted == false) {
-    
       Timer.periodic(Duration(seconds: 1), (t) {
         var controller =
             Provider.of<PrayerTimesController>(context, listen: false);
@@ -44,7 +49,6 @@ class _PrayerTimesHomeState extends State<PrayerTimesHome> {
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       appBar: AppBar(
         title: ListTile(
@@ -57,9 +61,14 @@ class _PrayerTimesHomeState extends State<PrayerTimesHome> {
               style: TextStyle(color: Colors.white, fontSize: 18)),
         ),
         backgroundColor: Colors.black87,
-        actions: [IconButton(onPressed: () {
-          Provider.of<PrayerTimesController>(context, listen: false).loadData();
-        }, icon: Icon(Icons.refresh))],
+        actions: [
+          IconButton(
+              onPressed: () {
+                Provider.of<PrayerTimesController>(context, listen: false)
+                    .loadData();
+              },
+              icon: Icon(Icons.refresh))
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -99,7 +108,8 @@ class _PrayerTimesHomeState extends State<PrayerTimesHome> {
               Consumer<PrayerTimesController>(builder: (context, val, child) {
                 return PrayerTime(
                     prayer: "Maghrib",
-                    time: "${val.getPrayers.maghrib} - ${val.getPrayers.sunSet}",
+                    time:
+                        "${val.getPrayers.maghrib} - ${val.getPrayers.sunSet}",
                     isTime: val.prayerName == "maghrib" ? true : false);
               }),
               Consumer<PrayerTimesController>(builder: (context, val, child) {

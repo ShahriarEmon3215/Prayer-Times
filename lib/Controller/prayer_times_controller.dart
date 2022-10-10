@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/src/foundation/print.dart';
@@ -15,13 +16,26 @@ class PrayerTimesController with ChangeNotifier {
     duhar: "1:00PM",
     asr: "4:30PM",
     maghrib: "6:00PM",
-    isha: "8:30PM",
+    isha: "7:30PM",
     sunRise: "5:45AM",
     sunSet: "6:55PM",
   );
 
   Prayer get getPrayers {
-    return this._prayers!;
+    var box = Hive.box('prayers');
+    String? data = box.get('fajr');
+    if (data!.isNotEmpty) {  
+       _prayers = Prayer(
+          fajr: box.get('fajr'),
+          duhar: box.get('duhar'),
+          asr: box.get('asr'),
+          maghrib: box.get('maghrib'),
+          isha: box.get('isha'),
+          sunRise: box.get('sunrise'),
+          sunSet: box.get('sunset'));
+      
+    }
+    return _prayers!;
   }
 
   int currentTimeinSec = 0;
@@ -40,6 +54,15 @@ class PrayerTimesController with ChangeNotifier {
 
   void loadData() async {
     _prayers = await getData();
+    var box = Hive.box('prayers');
+    box.put('fajr', _prayers!.fajr!);
+    box.put('duhar', _prayers!.duhar!);
+    box.put('asr', _prayers!.asr!);
+    box.put('maghrib', _prayers!.maghrib!);
+    box.put('isha', _prayers!.isha!);
+    box.put('sunrise', _prayers!.sunRise!);
+    box.put('sunset', _prayers!.sunSet!);
+
     print("data loaded from api ----");
   }
 
