@@ -1,9 +1,12 @@
-# prayer_times_app
+# PrayerTimes app
 
 # Technology used: 
          Dart 2.16.1 
          Flutter sdk 2.10.3
          Provider state management
-         Api
+         RestApi
          http
+         Hive local database
          
+
+ > Followed MVC pattern for this project.
