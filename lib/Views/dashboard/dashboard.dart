@@ -20,20 +20,19 @@ class _PrayerTimesHomeState extends State<PrayerTimesHome> {
   bool isStarted = false;
   int timeLeft = 0;
 
-  // @override
-  // void initState() {
-  //   // TODO: implement initState
-  //   super.initState();
-  //   Future.delayed(Duration.zero).then((value) =>
-  //       Provider.of<PrayerTimesController>(context, listen: false).loadData());
-  // }
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration.zero).then((value) =>
+        Provider.of<PrayerTimesController>(context, listen: false).loadData());
+  }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
 
     if (isStarted == false) {
-     // Provider.of<PrayerTimesController>(context, listen: false).loadData();
+    
       Timer.periodic(Duration(seconds: 1), (t) {
         var controller =
             Provider.of<PrayerTimesController>(context, listen: false);
@@ -45,7 +44,7 @@ class _PrayerTimesHomeState extends State<PrayerTimesHome> {
 
   @override
   Widget build(BuildContext context) {
-    Provider.of<PrayerTimesController>(context, listen: false).loadData();
+    
     return Scaffold(
       appBar: AppBar(
         title: ListTile(

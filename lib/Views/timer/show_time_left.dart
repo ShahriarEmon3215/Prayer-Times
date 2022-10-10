@@ -31,12 +31,13 @@ class ShowTimeLeft extends StatelessWidget {
           progressColor: Colors.black,
         ),
         Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text("${h.toInt().toString()} H",
-                style: TextStyle(fontSize: 60, fontWeight: FontWeight.bold)),
-            Text("${m.toInt().toString()} M",
+            Text("${h.toInt().toString()} HOUR",
                 style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold)),
-            Text("REMAINING", style: TextStyle(fontSize: 15))
+            Text("${m.toInt().toString()} MINUITE",
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+            Text("REMAINING", style: TextStyle(fontSize: 25)),
           ],
         ),
       ],

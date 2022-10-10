@@ -3,12 +3,10 @@ import 'package:intl/intl.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/src/foundation/print.dart';
 import 'package:prayer_times_app/Repository/get_data.dart';
-
 import '../Models/prayer.dart';
 
 class PrayerTimesController with ChangeNotifier {
   String? _prayer = "";
-  bool _test = true;
   String? _hour, _min, _am_pm;
   int timeLeft = 0;
   int timeDistance = 0;
@@ -17,7 +15,7 @@ class PrayerTimesController with ChangeNotifier {
     duhar: "1:00PM",
     asr: "4:30PM",
     maghrib: "6:00PM",
-    isha: "8:15PM",
+    isha: "8:30PM",
     sunRise: "5:45AM",
     sunSet: "6:55PM",
   );

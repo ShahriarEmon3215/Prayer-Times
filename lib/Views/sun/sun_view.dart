@@ -1,5 +1,6 @@
-
 import 'package:flutter/material.dart';
+import 'package:prayer_times_app/Controller/prayer_times_controller.dart';
+import 'package:provider/provider.dart';
 
 class Sun extends StatelessWidget {
   const Sun({
@@ -12,8 +13,7 @@ class Sun extends StatelessWidget {
       height: MediaQuery.of(context).size.height / 8,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: Colors.black87),
+          borderRadius: BorderRadius.circular(15), color: Colors.black87),
       child: Row(
         children: [
           Padding(
@@ -34,9 +34,13 @@ class Sun extends StatelessWidget {
                             color: Colors.white,
                             fontSize: 18,
                             fontWeight: FontWeight.bold)),
-                    Text("5:55 AM",
-                        style: TextStyle(
-                            color: Colors.white, fontSize: 20)),
+                    Consumer<PrayerTimesController>(
+                      builder: (context, val, child) {
+                        return Text(val.getPrayers.sunRise!,
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 20));
+                      },
+                    ),
                   ],
                 ),
                 Row(
@@ -47,9 +51,13 @@ class Sun extends StatelessWidget {
                             color: Colors.white,
                             fontSize: 18,
                             fontWeight: FontWeight.bold)),
-                    Text("6:14 PM",
-                        style: TextStyle(
-                            color: Colors.white, fontSize: 20)),
+                     Consumer<PrayerTimesController>(
+                      builder: (context, val, child) {
+                        return Text(val.getPrayers.sunSet!,
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 20));
+                      },
+                    ),
                   ],
                 )
               ],

@@ -16,8 +16,7 @@ class PrayerTime extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   // var prayerController = Provider.of<PrayerTimesController>(context);
-
+    // var prayerController = Provider.of<PrayerTimesController>(context);
 
     return Container(
       margin: EdgeInsets.all(10),
