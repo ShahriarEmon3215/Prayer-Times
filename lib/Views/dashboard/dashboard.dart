@@ -20,18 +20,12 @@ class _PrayerTimesHomeState extends State<PrayerTimesHome> {
   bool isStarted = false;
   int timeLeft = 0;
 
-  @override
-  void initState() {
-    super.initState();
-
-    // var box = Hive.box('prayers');
-    // String? data = box.get('fajr');
-    // if (data!.isNotEmpty) {
-      Future.delayed(Duration.zero).then((value) =>
-          Provider.of<PrayerTimesController>(context, listen: false)
-              .loadData());
-   // }
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   Future.delayed(Duration.zero).then((value) =>
+  //       Provider.of<PrayerTimesController>(context, listen: false).loadData());
+  // }
 
   @override
   void didChangeDependencies() {
@@ -49,6 +43,7 @@ class _PrayerTimesHomeState extends State<PrayerTimesHome> {
 
   @override
   Widget build(BuildContext context) {
+    Provider.of<PrayerTimesController>(context, listen: false).loadData();
     return Scaffold(
       appBar: AppBar(
         title: ListTile(
@@ -119,7 +114,11 @@ class _PrayerTimesHomeState extends State<PrayerTimesHome> {
                     isTime: val.prayerName == "isha" ? true : false);
               }),
               SizedBox(height: 10),
-              Sun(),
+              Consumer<PrayerTimesController>(builder: (context, val, child) {
+                return Sun(
+                    sunrise: val.getPrayers.sunRise,
+                    sunset: val.getPrayers.sunSet);
+              }),
             ],
           ),
         ),

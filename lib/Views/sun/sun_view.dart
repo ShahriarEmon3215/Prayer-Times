@@ -3,8 +3,13 @@ import 'package:prayer_times_app/Controller/prayer_times_controller.dart';
 import 'package:provider/provider.dart';
 
 class Sun extends StatelessWidget {
-  const Sun({
+  String? sunrise;
+  String? sunset;
+
+  Sun({
     Key? key,
+    this.sunrise,
+    this.sunset,
   }) : super(key: key);
 
   @override
@@ -29,18 +34,15 @@ class Sun extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("SUN RISE",
+                    Text('SUN RISE',
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 18,
                             fontWeight: FontWeight.bold)),
-                    Consumer<PrayerTimesController>(
-                      builder: (context, val, child) {
-                        return Text(val.getPrayers.sunRise!,
+                   Text(this.sunrise != null? this.sunrise! : " ",
                             style:
-                                TextStyle(color: Colors.white, fontSize: 20));
-                      },
-                    ),
+                                TextStyle(color: Colors.white, fontSize: 20))
+                    
                   ],
                 ),
                 Row(
@@ -51,13 +53,10 @@ class Sun extends StatelessWidget {
                             color: Colors.white,
                             fontSize: 18,
                             fontWeight: FontWeight.bold)),
-                     Consumer<PrayerTimesController>(
-                      builder: (context, val, child) {
-                        return Text(val.getPrayers.sunSet!,
+                    Text(this.sunset != null? this.sunset! : " ",
                             style:
-                                TextStyle(color: Colors.white, fontSize: 20));
-                      },
-                    ),
+                                TextStyle(color: Colors.white, fontSize: 20))
+                     
                   ],
                 )
               ],

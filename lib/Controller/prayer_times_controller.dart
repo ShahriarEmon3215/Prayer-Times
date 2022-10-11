@@ -11,6 +11,7 @@ class PrayerTimesController with ChangeNotifier {
   String? _hour, _min, _am_pm;
   int timeLeft = 0;
   int timeDistance = 0;
+  bool check = false;
   Prayer? _prayers = Prayer(
     fajr: "4:13AM",
     duhar: "1:00PM",
@@ -24,17 +25,15 @@ class PrayerTimesController with ChangeNotifier {
   Prayer get getPrayers {
     var box = Hive.box('prayers');
     String? data = box.get('fajr');
-    if (data!.isNotEmpty) {  
-       _prayers = Prayer(
-          fajr: box.get('fajr'),
-          duhar: box.get('duhar'),
-          asr: box.get('asr'),
-          maghrib: box.get('maghrib'),
-          isha: box.get('isha'),
-          sunRise: box.get('sunrise'),
-          sunSet: box.get('sunset'));
-      
-    }
+
+    _prayers = Prayer(
+        fajr: box.get('fajr'),
+        duhar: box.get('duhar'),
+        asr: box.get('asr'),
+        maghrib: box.get('maghrib'),
+        isha: box.get('isha'),
+        sunRise: box.get('sunrise'),
+        sunSet: box.get('sunset'));
     return _prayers!;
   }
 
