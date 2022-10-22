@@ -1,13 +1,13 @@
 # PrayerTimes app
 
 <h1> Technology used: </h1>
-         <h2>Dart 2.16.1 </h2> 
-         Flutter sdk 2.10.3
-         Provider state management
-         RestApi
-         http
-         Hive local database
-         with null safty
+         <h6>Dart 2.16.1 </h6> 
+         <h6> Flutter sdk 2.10.3</h6>
+         <h6> Provider state management</h6>
+          <h6>RestApi</h6>
+         <h6> http</h6>
+         <h6> Hive local database</h6>
+         <h6> with null safty</h6>
          
 
  > Followed MVC pattern for this project.
