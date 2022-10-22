@@ -7,7 +7,7 @@
          RestApi
          http
          Hive local database
+         with null safty
          
 
  > Followed MVC pattern for this project.
- > Null safty.
