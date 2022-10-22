@@ -1,7 +1,7 @@
 # PrayerTimes app
 
- Technology used: 
-         Dart 2.16.1 
+<h1> Technology used: </h1>
+         <h2>Dart 2.16.1 </h2> 
          Flutter sdk 2.10.3
          Provider state management
          RestApi
