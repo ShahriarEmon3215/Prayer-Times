@@ -1,6 +1,6 @@
 # PrayerTimes app
 
-<h1> Technology used: </h1>
+<h3> Technology used: </h3>
          <h6>Dart 2.16.1 </h6> 
          <h6> Flutter sdk 2.10.3</h6>
          <h6> Provider state management</h6>
